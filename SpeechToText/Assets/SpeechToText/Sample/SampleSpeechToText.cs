@@ -7,7 +7,6 @@ public class SampleSpeechToText : MonoBehaviour {
     public SpeechToText speech;
     public Text txtStatus;
     public Text txtResult;
-    public Dropdown dropdown;
     void Start () {
         txtResult.text = "";
         txtStatus.text = "";
@@ -15,6 +14,7 @@ public class SampleSpeechToText : MonoBehaviour {
         speech.onStart = OnStartSpeech;
         speech.onStop = OnStopSpeech;
         speech.onResult = OnResultSpeech;
+        speech.changeLanguage("en-US");
 #endif
     }
 
@@ -32,29 +32,16 @@ public class SampleSpeechToText : MonoBehaviour {
         }
 #endif
     }
-    public void dropdownChange()
-    {
-        string lang = "en-US";
-        if (dropdown.value == 0)
-        {
-            lang = "en-US";
-        }
-        else if (dropdown.value == 1)
-        {
-            lang = "Vietnamese";
-        }
-#if UNITY_IPHONE
-        speech.changeLanguage(lang);
-#endif
-    }
 #if UNITY_IPHONE
     void OnStartSpeech()
     {
+        isRecording = true;
         txtStatus.text = "Recoding...";
     }
 
     void OnStopSpeech()
     {
+        isRecording = false;
         txtStatus.text = "";
     }
 
