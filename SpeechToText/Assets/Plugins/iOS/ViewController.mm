@@ -26,7 +26,7 @@
 
 -(void)changeLanguage:(const char *) lang
 {
-    GOOGLE_SPEECH_TO_TEXT_LANG = [NSString stringWithUTF8String:lang];;
+    GOOGLE_SPEECH_TO_TEXT_LANG = [NSString stringWithUTF8String:lang];
 }
 - (void)startRecording {
     if (isRecording == NO) {        
